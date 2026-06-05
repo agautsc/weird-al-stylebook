@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weird Al Grammar Checker</title>
+    <meta
+      name="description"
+      content="A client-side grammar checker with an editorial Weird Al Stylebook voice."
+    >
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="checker.js" defer></script>
+  </head>
+  <body class="checker-body">
+    <main class="checker-shell" aria-labelledby="checker-title">
+      <header class="checker-hero">
+        <a class="back-link" href="index.html">Stylebook</a>
+        <p class="eyebrow">The Weird Al Stylebook presents</p>
+        <h1 id="checker-title">The Word Crimes Desk</h1>
+        <p class="checker-deck">
+          Paste a draft and get a mostly serious grammar audit. Nothing leaves your browser.
+        </p>
+      </header>
+
+      <section class="checker-grid" aria-label="Grammar checker">
+        <form class="editor-panel" id="checker-form">
+          <label for="draft">Your text</label>
+          <textarea
+            id="draft"
+            name="draft"
+            spellcheck="true"
+            placeholder="Paste your sentence, email, LinkedIn manifesto, or suspiciously enthusiastic reply-all here."
+          ></textarea>
+          <div class="checker-actions">
+            <button type="submit">Check it</button>
+            <button type="button" class="secondary" id="sample-button">Load sample</button>
+            <button type="button" class="secondary" id="clear-button">Clear</button>
+          </div>
+        </form>
+
+        <aside class="report-panel" aria-live="polite">
+          <div class="score-card">
+            <span class="score-label">Severity</span>
+            <strong id="severity">0</strong>
+            <span id="verdict">Awaiting evidence.</span>
+          </div>
+          <div class="stats" aria-label="Text statistics">
+            <span><strong id="word-count">0</strong> words</span>
+            <span><strong id="issue-count">0</strong> notes</span>
+          </div>
+          <ol class="findings" id="findings">
+            <li class="empty">Type something and summon the accordion of accountability.</li>
+          </ol>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
