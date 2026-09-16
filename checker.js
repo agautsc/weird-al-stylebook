@@ -106,11 +106,17 @@ function escapeHtml(value) {
     .replace(/'/g, "&#039;");
 }
 
+// Suggestions may reference regex groups as $1, $2, ... Fill them from the match.
+function fillCaptures(template, match) {
+  return template.replace(/\$(\d)/g, (_, n) => match[n] ?? "");
+}
+
 function getMatches(text) {
   return rules.flatMap((rule) => {
     const matches = [...text.matchAll(rule.regex)];
     return matches.map((match) => ({
       ...rule,
+      suggestion: fillCaptures(rule.suggestion, match),
       phrase: match[0],
       index: match.index
     }));
